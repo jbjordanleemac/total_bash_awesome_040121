@@ -155,4 +155,40 @@ echo `ps -ef | awk -F" " '{print $1}' | sort | uniq -c`
 #   cd /tmp  && mv $f ${f/%doc/txt}
 # done 
 
+# find out the most disk used files on popular dirs opt var etc usr
 
+echo "/opt" > /tmp/list && echo "/var" >> /tmp/list && echo "/etc" >> /tmp/list && echo "/usr" >> /tmp/list
+
+for g in `cat /tmp/list`
+do
+  echo $g
+done
+
+# echo out the last 3 lines of a file
+
+for h in `cat /opt/bash_test2/list`
+do
+  echo $h
+done
+
+# initilize lists array
+
+lists=()
+
+for i in `cat /opt/bash_test2/list`
+do
+  lists=(${lists[@]} $i)
+done
+
+echo "after initlized lists array becomes ${lists[@]}"
+
+
+# echo out the last 3 lines of a file
+
+k=${#lists[@]}
+
+for j in {1..3}
+do
+  echo ${lists[$(( k - 1 ))]}
+  k=$(( k - 1 ))
+done
