@@ -162,6 +162,8 @@ echo "/opt" > /tmp/list && echo "/var" >> /tmp/list && echo "/etc" >> /tmp/list 
 for g in `cat /tmp/list`
 do
   echo $g
+  cd $g && echo `du -sm . 2>/dev/null` 
+  cd $g && echo `du -sm * 2>/dev/null | sort -rn | head -5`
 done
 
 # echo out the last 3 lines of a file
@@ -194,3 +196,5 @@ do
 done
 
 # adding comment from 2ndbranch 040121 410pm
+
+
